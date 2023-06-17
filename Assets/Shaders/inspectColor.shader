@@ -1,5 +1,8 @@
-Shader "Custom/Minimum"
+Shader "Custom/inspectColor"
 {
+    Properties{
+		_BaseColor ("Base Color", Color) = (1,1,1,1)
+	}
     SubShader
     {
         Tags { "RenderType"="Opaque" }
@@ -17,9 +20,11 @@ Shader "Custom/Minimum"
         UNITY_INSTANCING_BUFFER_START(Props)
         UNITY_INSTANCING_BUFFER_END(Props)
 
+        fixed4 _BaseColor;
+
         void surf (Input IN, inout SurfaceOutputStandard o)
         {
-            o.Albedo = fixed4(0.5f, 0.5f, 1.0f, 1);
+            o.Albedo = _BaseColor.rgb;
         }
         ENDCG
     }
