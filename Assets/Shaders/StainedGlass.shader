@@ -28,8 +28,8 @@ Shader "Custom/StainedGlass"
             fixed4 c = tex2D(_MainTex, IN.uv_MainTex);
             o.Albedo = tex2D(_MainTex, IN.uv_MainTex);
             // o.Albedo = c.rgb;
-            float greyScale = c.r*0.3 + c.g*0.6 + c.b*0.1;
-            if(greyScale<=0.2){
+            float greyScale = c.r*0.3 + c.g*0.6 + c.b*0.1; //グレースケールと同様に、pは黒いところは0、白いところは1を返す。
+            if(greyScale<=0.2){ //黒いところは不透明に;
                 o.Alpha = 1;
             }else{
                 o.Alpha = 0.5;
