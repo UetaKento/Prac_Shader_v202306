@@ -25,8 +25,8 @@ Shader "Custom/UVscroll_Water"
         void surf (Input IN, inout SurfaceOutputStandard o)
         {
             fixed2 uv = IN.uv_MainTex;
-			uv.x += 0.2 * _Time;
-			uv.y += 0.4 * _Time;
+			uv.x += 0.4 * _Time;
+			uv.y += 0.8 * _Time;
 			o.Albedo = tex2D (_MainTex, uv);
         }
         ENDCG
