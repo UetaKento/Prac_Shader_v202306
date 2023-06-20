@@ -20,7 +20,7 @@ Shader "Custom/CircleDraw"
         void surf (Input IN, inout SurfaceOutputStandard o)
         {
             float dist = distance( fixed3(0,5,0), IN.worldPos );
-            float val = abs(sin(dist*_Time*5)); // (0,5,0)からの距離(dist)をsinのθとみなす。
+            float val = abs(sin(dist)); // (0,5,0)からの距離(dist)をsinのθとみなす。
             if( val > 0.98 ){
 				o.Albedo = fixed4(1, 1, 1, 1);
 			} else {
