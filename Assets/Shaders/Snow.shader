@@ -1,11 +1,10 @@
-Shader "Custom/Dissolve"
+Shader "Custom/Snow"
 {
     Properties
     {
         _Color ("Color", Color) = (1,1,1,1)
         _MainTex ("Albedo (RGB)", 2D) = "white" {}
-        _DisolveTex ("DisolveTex (RGB)", 2D) = "white" {}
-		_Threshold("Threshold", Range(0,1))= 0.0
+        _Snow("Snow", Range(0,2))= 0.0
     }
     SubShader
     {
@@ -17,14 +16,14 @@ Shader "Custom/Dissolve"
         #pragma target 3.0
 
         sampler2D _MainTex;
-		sampler2D _DisolveTex;
 
         struct Input
         {
             float2 uv_MainTex;
+            float3 worldNormal;
         };
 
-		half _Threshold;
+		half _Snow;
 		fixed4 _Color;
 
         UNITY_INSTANCING_BUFFER_START(Props)
@@ -32,14 +31,10 @@ Shader "Custom/Dissolve"
 
         void surf (Input IN, inout SurfaceOutputStandard o)
         {
-            fixed4 m = tex2D (_DisolveTex, IN.uv_MainTex);
-			half g = m.r * 0.2 + m.g * 0.7 + m.b * 0.1;
-            _Threshold = abs(sin(_Time*10));
-			if( g < _Threshold ){
-				discard;
-			} 
-
-			fixed4 c = tex2D (_MainTex, IN.uv_MainTex) * _Color;
+            float d = dot(IN.worldNormal, fixed3(0, 1, 0));
+            fixed4 c = tex2D (_MainTex, IN.uv_MainTex) * _Color;
+            fixed4 white = fixed4(1,1,1,1);
+            c = lerp(c, white, d*_Snow);
 			o.Albedo = c.rgb;
         }
         ENDCG

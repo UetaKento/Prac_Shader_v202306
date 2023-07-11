@@ -1,11 +1,12 @@
-Shader "Custom/UVscroll_Water"
+Shader "Custom/Cutout_Plane"
 {
-    Properties{
-		_MainTex("Texture", 2D) = "white"{}
-	}
+    Properties {
+        _Color ("Color", Color) = (1,1,1,1)
+    }
     SubShader
     {
-        Tags { "RenderType"="Opaque" }
+        Tags { "RenderType"="Opaque"
+               "Queue" = "Geometry-2" }
         LOD 200
 
         CGPROGRAM
@@ -20,14 +21,9 @@ Shader "Custom/UVscroll_Water"
         UNITY_INSTANCING_BUFFER_START(Props)
         UNITY_INSTANCING_BUFFER_END(Props)
 
-        sampler2D _MainTex;
-
         void surf (Input IN, inout SurfaceOutputStandard o)
         {
-            fixed2 uv = IN.uv_MainTex;
-			uv.x += 0.4 * _Time;
-			uv.y += 0.8 * _Time;
-			o.Albedo = tex2D (_MainTex, uv);
+            o.Albedo = fixed4(0.5f, 0.5f, 1.0f, 1);
         }
         ENDCG
     }
