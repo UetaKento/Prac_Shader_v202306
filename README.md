@@ -3,7 +3,9 @@
 
 
 - 透明なShader
+<img width="300" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMXJhbGt0cnM4d3NmZG5kMW02Y2Zjc3dheGdseGI1amVqZTZoYnBjeiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/MFkkA2A3mesC1XNnsl/giphy.gif">
 - 氷のようなShader
+  <img width="300" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcnBic2tmMHkwOTJpbXdjbmcxMTczNnl5aWowd2J1amYxaWR3dGljaCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Ya3bWwaJ84EVQ3c0Kl/giphy.gif">
 - リムライティング
 - テクスチャマッピング
 - ステンドグラスのようなShader
