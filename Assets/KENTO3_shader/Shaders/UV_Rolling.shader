@@ -25,13 +25,13 @@ Shader "Unlit/UV_Rolling"
                 //その頂点の位置に対応するかを示す情報で、この座標を「UV座標」と呼ぶ。
                 //Unityの標準的なキューブの正面側の面には4つの頂点があり、その左下の頂点にはUV座標(0, 0)が、右上の頂点にはUV座標(1, 1)が与えられる。
                 //したがって、UV座標(0, 0)が与えられた画素には、テクスチャの座標(0, 0)の色が描画される。 
-                float2 uv : TEXCOORD0;
+                float2 uv : TEXCOORD;
             };
 
             struct v2f
             {
-                float2 uv : TEXCOORD0;
                 float4 vertex : SV_POSITION;
+                float2 uv : TEXCOORD;
             };
 
             //Unityのスクリプト側のライブラリに定義されるように、

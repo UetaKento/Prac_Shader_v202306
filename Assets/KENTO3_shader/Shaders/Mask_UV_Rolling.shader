@@ -1,10 +1,10 @@
-Shader "Unlit/Mask"
+Shader "Unlit/Mask_UV_Rolling"
 {
     Properties
     {
         _MainTex ("Texture", 2D) = "white" {}
-        //透明な部分持つ画像(Alfa値を持つ画像)を用意して、透明でない部分だけ描画する。 
-        _MaskTex("MaskTexture(AlfaImage)", 2D) = "white" {}
+        _MaskTex("MaskTexture", 2D) = "white" {}
+        _RotateSpeed ("Rotate Speed", Range(0, 5)) = 0.0
     }
     SubShader
     {
@@ -39,6 +39,7 @@ Shader "Unlit/Mask"
             //型名がTextureやTexture2Dではないが、テクスチャそのものを表す型と覚えてもよい。
             sampler2D _MainTex;
             sampler2D _MaskTex;
+            fixed _RotateSpeed;
 
             v2f vert (appdata v)
             {
@@ -50,13 +51,21 @@ Shader "Unlit/Mask"
 
             fixed4 frag (v2f i) : SV_Target
             {
-                //マスク用画像のピクセルの色を計算
-                fixed4 mask = tex2D(_MaskTex, i.uv);
+                //i.uvは後で回転の計算をするので、先にマスク用画像のピクセルの色をmaskに代入。
+                fixed4 mask = tex2D(_MaskTex, i.uv); 
+                mask.a = 0.3*mask.r + 0.6*mask.g + 0.1*mask.b;
+                //GrayScaleにしたことによって、黒色の部分は0に近い値を持っているので、
+                //そこをclipで描画しないようにする。
+                clip(mask.a-0.5);
 
-                //clip関数は、指定された値が0より小さい場合、ピクセルを破棄する。
-                //透明な部分のAlfa値は0、不透明な部分のAlfa値は255なので、
-                //Alfa値-0.1で透明な部分を負の値にして、clip()で描画しないようにする。
-                clip(mask.a-0.1);
+                half timer = _Time.y;
+                //回転行列を作る
+                half angleCos = cos(timer * _RotateSpeed);
+                half angleSin = sin(timer * _RotateSpeed);
+                half2x2 rotateMatrix = half2x2(angleCos, -angleSin, angleSin, angleCos);
+                //中心合わせ。-0.5をしないと、右上の頂点、つまりUV座標(1, 1)を中心に回転する。
+                half2 uv = i.uv - 0.5; 
+                i.uv = mul(uv, rotateMatrix) + 0.5;
 
                 fixed4 col = tex2D(_MainTex, i.uv);
                 return col*mask;
