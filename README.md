@@ -63,6 +63,10 @@
 - <img width="300" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbGtmaWQ4d211cXlwYXh4Mm12YnR1N3cyaGV0ejJmMHhjeGJ5NHZ0MyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/oIibHt4i0vIj2yBJaA/giphy.gif">
 - 円の大きなったり小さくなったり
 - <img width="300" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZGVwcHg0dGRmb25vZjNuOWgwbjdsbnBqeW1tMHhrcjA4NTB6ejV3MyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/c0vXC1IJb8dT2llCW5/giphy.gif">
+- 連続する円の拡大
+- <img width="300" src="https://media.giphy.com/media/NEwU1zL8nmYda67uKG/giphy.gif">
+- チェッカーの切り替え
+- <img width="300" src="https://media.giphy.com/media/Tm6u0noZcvgtt0gXUD/giphy.gif">
 
 </details>
 
