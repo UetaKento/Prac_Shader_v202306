@@ -51,12 +51,10 @@ Shader "Unlit/Hamon_v2"
 
             fixed4 frag (v2f i) : SV_Target
             {
-                //マスク用画像のピクセルの色を計算
+                //マスク用画像のピクセルの色を計算 
                 fixed4 mask = tex2D(_MaskTex, i.uv);
-
                 //マスク用画像の色を白黒(GrayScale)に変える。黒色に近いほど0に近い値をとる。 
-                fixed grayscale = 0.3*mask.r + 0.6*mask.g + 0.1*mask.b;
-                mask.a = grayscale;
+                mask.a = 0.3*mask.r + 0.6*mask.g + 0.1*mask.b;
                 //GrayScaleにしたことによって、黒色の部分は0に近い値を持っているので、
                 //そこをclipで描画しないようにする。
                 clip(mask.a-0.5);
