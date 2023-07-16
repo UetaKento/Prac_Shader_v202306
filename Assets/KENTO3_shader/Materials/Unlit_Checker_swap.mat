@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Unlit_Mask_from_GrayScale
-  m_Shader: {fileID: 4800000, guid: 9e26df90d6e654f76857d251e411a7b8, type: 3}
+  m_Name: Unlit_Checker_swap
+  m_Shader: {fileID: 4800000, guid: 13d933235af7148ffa098d1e967f2151, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
@@ -24,7 +24,11 @@ Material:
         m_Texture: {fileID: 2800000, guid: edadcfc8c83574e4ead4dd3ebb25b38e, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _MaskTex:
+    - _MaskTex1:
+        m_Texture: {fileID: 2800000, guid: 4005b8462c8af43a990d62e36ddbc0ad, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MaskTex2:
         m_Texture: {fileID: 2800000, guid: 8c8703836c01346658ddfc9d3bd11118, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}

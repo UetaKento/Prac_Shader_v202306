@@ -40,9 +40,9 @@ Shader "Unlit/Hamon_v2"
             {
                 v2f o;
                 o.vertex = UnityObjectToClipPos(v.vertex);
-                //メッシュの頂点座標を時間経過に応じてSin関数で変化させている。
-				//_Timeで時間が取得でき、_Time.(x|y|z|w)で時間の流れる速さを選べる。[x:1/20、y:1、z:2、w:3]
-				float4 vert = float4(v.vertex.xyz * sin(clamp(_Time.y, 0, 5)), v.vertex.w);
+                //(_Time.y - floor(_Time.y))はのこぎり波と呼ばれるもの。
+                //これにより増加し続ける_Time.yのinputに対して、0->1->0->1...というoutputが出せる。 
+				float4 vert = float4(v.vertex.xyz * (_Time.y - floor(_Time.y)), v.vertex.w);
 				//そのvertをもとに「3Dの世界での座標は2D(スクリーン)においてはこの位置になりますよ」という変換を行う。
 				o.vertex = UnityObjectToClipPos(vert);
                 o.uv = v.uv;
@@ -51,12 +51,10 @@ Shader "Unlit/Hamon_v2"
 
             fixed4 frag (v2f i) : SV_Target
             {
-                //マスク用画像のピクセルの色を計算
+                //マスク用画像のピクセルの色を計算 
                 fixed4 mask = tex2D(_MaskTex, i.uv);
-
                 //マスク用画像の色を白黒(GrayScale)に変える。黒色に近いほど0に近い値をとる。 
-                fixed grayscale = 0.3*mask.r + 0.6*mask.g + 0.1*mask.b;
-                mask.a = grayscale;
+                mask.a = 0.3*mask.r + 0.6*mask.g + 0.1*mask.b;
                 //GrayScaleにしたことによって、黒色の部分は0に近い値を持っているので、
                 //そこをclipで描画しないようにする。
                 clip(mask.a-0.5);
