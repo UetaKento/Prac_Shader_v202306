@@ -27,5 +27,5 @@ Material:
     - _GreenValue: -1.55
     - _RedValue: -0.26
     m_Colors:
-    - _Color: {r: 0.15686275, g: 0.50980395, b: 0, a: 0.22745098}
+    - _Color: {r: 0.15686275, g: 0.50980395, b: 0, a: 0.59607846}
   m_BuildTextureStacks: []
