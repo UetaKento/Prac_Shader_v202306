@@ -1,9 +1,8 @@
-Shader "Unlit/UV_Rolling"
+Shader "Unlit/Texture_IF"
 {
     Properties
     {
         _MainTex ("Texture", 2D) = "white" {}
-        _RotateSpeed ("Rotate Speed", Range(0, 10)) = 1
     }
     SubShader
     {
@@ -49,19 +48,15 @@ Shader "Unlit/UV_Rolling"
 
             fixed4 frag (v2f i) : SV_Target
             {
-                //Timeを入力として現在の回転角度を作る
-                half timer = _Time.x;
-                //回転行列を作る
-                half angleCos = cos(timer * _RotateSpeed);
-                half angleSin = sin(timer * _RotateSpeed);
-                //原点を中心にθだけ回転する変換を表す回転行列R(θ) 
-                half2x2 rotateMatrix = half2x2(angleCos, -angleSin, angleSin, angleCos);
-                //中心合わせ。-0.5をしないと、右上の頂点、つまりUV座標(1, 1)を中心に回転する。
-                half2 uv = i.uv -0.5;
-                //中心を起点にUVを回転させる。中心合わせで-0.5したままだと、
-                //テクスチャが左下にスライドした状態になるので+0.5をする。
-                //mul()はベクトルや行列の掛け算をする、組み込み関数。 
-                i.uv = mul(uv, rotateMatrix) + 0.5;
+                //step(edge, x)は「x < edge」の時に0を、それ以外で1を返す。
+                //stepは全ての条件がTrue(論理和がTrue)の時にしか1を返さない。
+                //例えば、step(0.5, i.uv)で、(i.uv.x, i.uv.y)=(0.7, 0.3)の時、i.uv.yが0.5より小さいので、stepは0を返す。
+                //同様に、(i.uv.x, i.uv.y)=(0.2, 0.8)の時、i.uv.xが0.5より小さいので、stepは0を返す。
+                //(i.uv.x, i.uv.y)=(0.6, 0.6)の時、両方とも0.5より大きいので、stepは1を返す。 
+                half uv_x = step(0.5, i.uv.x);
+                half uv_y = step(0.5, i.uv.y);
+                //画素ごとにuv_xとuv_yという変数を持たせて、その合計が0.1より小さかったら描画しない。 
+                i.uv = step(0.1, uv_x+uv_y) * i.uv;
                 fixed4 col = tex2D(_MainTex, i.uv);
                 return col;
             }

@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Unlit_UV_Rolling
-  m_Shader: {fileID: 4800000, guid: bf8875598383a4306a111b2a153ea8f2, type: 3}
+  m_Name: Unlit_UV_Rolling_IF
+  m_Shader: {fileID: 4800000, guid: 6199a2e3ea03b474b92fb76962ab2dfc, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
@@ -26,6 +26,6 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _RotateSpeed: 6.8
+    - _RotateSpeed: 9.75
     m_Colors: []
   m_BuildTextureStacks: []

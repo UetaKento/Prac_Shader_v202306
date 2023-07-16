@@ -17,6 +17,8 @@ Shader "Unlit/UV_Rolling"
             #pragma fragment frag
             #include "UnityCG.cginc"
 
+            #define LESS(x, y) 1.0 - step(y, x)
+
             struct appdata
             {
                 float4 vertex : POSITION;
@@ -57,11 +59,12 @@ Shader "Unlit/UV_Rolling"
                 //原点を中心にθだけ回転する変換を表す回転行列R(θ) 
                 half2x2 rotateMatrix = half2x2(angleCos, -angleSin, angleSin, angleCos);
                 //中心合わせ。-0.5をしないと、右上の頂点、つまりUV座標(1, 1)を中心に回転する。
-                half2 uv = i.uv -0.5;
+                i.uv = LESS(i.uv, 0.5) * i.uv;
+                //half2 uv = i.uv - 0.5;
                 //中心を起点にUVを回転させる。中心合わせで-0.5したままだと、
                 //テクスチャが左下にスライドした状態になるので+0.5をする。
-                //mul()はベクトルや行列の掛け算をする、組み込み関数。 
-                i.uv = mul(uv, rotateMatrix) + 0.5;
+                //mul()はベクトルや行列の掛け算をする、組み込み関数。
+                //i.uv = mul(uv, rotateMatrix) + 0.5;
                 fixed4 col = tex2D(_MainTex, i.uv);
                 return col;
             }
