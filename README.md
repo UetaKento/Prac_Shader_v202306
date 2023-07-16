@@ -39,6 +39,8 @@
 
 ## 「そろそろShaderをやる」で作ったもの
 こちらの[そろそろShaderをやる](https://zenn.dev/kento_o)を参考にして作ったshader集。
+
+[コード置き場](https://github.com/UetaKento/Prac_Shader_v202306/tree/main/Assets/KENTO3_shader/Shaders)
 <!-- GIF format is <img width="300" src=".gif"> -->
 <details>
 <summary>shader集</summary>
