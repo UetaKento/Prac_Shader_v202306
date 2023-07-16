@@ -40,9 +40,9 @@ Shader "Unlit/Hamon_v2"
             {
                 v2f o;
                 o.vertex = UnityObjectToClipPos(v.vertex);
-                //メッシュの頂点座標を時間経過に応じてSin関数で変化させている。
-				//_Timeで時間が取得でき、_Time.(x|y|z|w)で時間の流れる速さを選べる。[x:1/20、y:1、z:2、w:3]
-				float4 vert = float4(v.vertex.xyz * sin(clamp(_Time.y, 0, 5)), v.vertex.w);
+                //(_Time.y - floor(_Time.y))はのこぎり波と呼ばれるもの。
+                //これにより増加し続ける_Time.yのinputに対して、0->1->0->1...というoutputが出せる。 
+				float4 vert = float4(v.vertex.xyz * (_Time.y - floor(_Time.y)), v.vertex.w);
 				//そのvertをもとに「3Dの世界での座標は2D(スクリーン)においてはこの位置になりますよ」という変換を行う。
 				o.vertex = UnityObjectToClipPos(vert);
                 o.uv = v.uv;
