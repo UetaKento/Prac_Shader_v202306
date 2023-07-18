@@ -67,6 +67,14 @@
 - <img width="300" src="https://media.giphy.com/media/NEwU1zL8nmYda67uKG/giphy.gif">
 - チェッカーの切り替え
 - <img width="300" src="https://media.giphy.com/media/Tm6u0noZcvgtt0gXUD/giphy.gif">
+- ワールド空間を使った色のスライス
+- <img width="300" src="https://media.giphy.com/media/VAHsZREtFufn5wNxEW/giphy.gif">
+- ワールド空間を使った白黒の切り替え
+- <img width="300" src="https://media.giphy.com/media/QWPFrhZKNzqH1nuUkV/giphy.gif">
+- モデル空間を使った色のスライス
+- <img width="300" src="https://media.giphy.com/media/bPfAS06AAXYBfXnePe/giphy.gif">
+- UVスクロールを使った波
+- <img width="300" src="https://media.giphy.com/media/Gx4xNZVN16HWzgbBlQ/giphy.gif">
 
 </details>
 
