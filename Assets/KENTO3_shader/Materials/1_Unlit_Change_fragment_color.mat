@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Unlit_Tranparent_v2
-  m_Shader: {fileID: 4800000, guid: 897a422be495848948cca0f9f4369c73, type: 3}
+  m_Name: 1_Unlit_Change_fragment_color
+  m_Shader: {fileID: 4800000, guid: 1bf890973a99542c8ad07a63de17608b, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
@@ -22,6 +22,5 @@ Material:
     m_TexEnvs: []
     m_Ints: []
     m_Floats: []
-    m_Colors:
-    - _Color: {r: 0.2506415, g: 0.745283, b: 0.10898005, a: 0}
+    m_Colors: []
   m_BuildTextureStacks: []

@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Unlit_Change_fragment_color
-  m_Shader: {fileID: 4800000, guid: 1bf890973a99542c8ad07a63de17608b, type: 3}
+  m_Name: 8a_Unlit_Shirokuro_worldPosition
+  m_Shader: {fileID: 4800000, guid: 58f0b230bbb3b4ec680f959e2db1b1ac, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
