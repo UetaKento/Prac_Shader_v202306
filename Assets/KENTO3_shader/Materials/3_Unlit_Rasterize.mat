@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Unlit_Mask_UV_Rolling_Sep_cv
-  m_Shader: {fileID: 4800000, guid: 08f7134dd102a4e0885dfa0e24a66399, type: 3}
+  m_Name: 3_Unlit_Rasterize
+  m_Shader: {fileID: 4800000, guid: 050447ed9a3bb451ba8b3f82aec23e11, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
@@ -19,17 +19,8 @@ Material:
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 825825aa465d14e23a4f593a9dbdd8e6, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _MaskTex:
-        m_Texture: {fileID: 2800000, guid: c2283dc6c8de94a038e88b615eaf1555, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
+    m_TexEnvs: []
     m_Ints: []
-    m_Floats:
-    - _RotateSpeed: 1
+    m_Floats: []
     m_Colors: []
   m_BuildTextureStacks: []

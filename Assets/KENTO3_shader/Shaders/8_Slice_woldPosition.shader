@@ -22,8 +22,7 @@ Shader "Unlit/Slice_woldPosition"
 
             struct appdata
             {
-                float4 vertex : POSITION;
-                float3 worldPos : WORLD_POS;
+                float4 vertex : POSITION;                
             };
 
             struct v2f
@@ -62,7 +61,7 @@ Shader "Unlit/Slice_woldPosition"
             fixed4 frag (v2f i) : SV_Target
             {
                 //各頂点のワールド座標(Y軸)それぞれに_SliceSpaceをかけてfrac関数で少数だけ取り出す
-                half worldSlice = frac(i.worldPos.y * _SliceSpace);
+                float3 worldSlice = frac(i.worldPos.y * _SliceSpace);
                 //そこから-0.5してclip関数に渡す。0を下回ったら描画しない
                 clip(worldSlice - 0.5);
                 //RGBAにそれぞれのプロパティを当てはめてみる 

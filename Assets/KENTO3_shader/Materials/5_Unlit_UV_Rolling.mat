@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Unlit_Shirokuro_worldPosition
-  m_Shader: {fileID: 4800000, guid: 58f0b230bbb3b4ec680f959e2db1b1ac, type: 3}
+  m_Name: 5_Unlit_UV_Rolling
+  m_Shader: {fileID: 4800000, guid: bf8875598383a4306a111b2a153ea8f2, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
@@ -19,8 +19,13 @@ Material:
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
-    m_TexEnvs: []
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: edadcfc8c83574e4ead4dd3ebb25b38e, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Ints: []
-    m_Floats: []
+    m_Floats:
+    - _RotateSpeed: 6.8
     m_Colors: []
   m_BuildTextureStacks: []
