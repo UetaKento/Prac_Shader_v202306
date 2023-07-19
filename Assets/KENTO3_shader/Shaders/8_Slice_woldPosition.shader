@@ -54,7 +54,7 @@ Shader "Unlit/Slice_woldPosition"
                 o.vertex = UnityObjectToClipPos(v.vertex);
 
                 //unity_ObjectToWorldはモデル行列と同じ意味で、ここではモデル変換をしてワールド空間を算出している。
-                o.worldPos = mul(unity_ObjectToWorld, v.vertex).xyz;
+                o.worldPos = mul(unity_ObjectToWorld, v.vertex);
                 return o;
             }
 

@@ -53,8 +53,8 @@ Shader "Unlit/Slice_ModelPosition"
                 //それらを1つにまとめたものがMVP行列(UNITY_MATRIX_MVP)。
                 o.vertex = UnityObjectToClipPos(v.vertex);
 
-                //頂点シェーダに渡される頂点座標はもともと「モデル空間の座標」なので、そのxyzをそのまま渡す。
-                o.modelPos = v.vertex.xyz;
+                //頂点シェーダに渡される頂点座標はもともと「モデル空間の座標」なので、そのまま渡す。 
+                o.modelPos = v.vertex;
                 return o;
             }
 

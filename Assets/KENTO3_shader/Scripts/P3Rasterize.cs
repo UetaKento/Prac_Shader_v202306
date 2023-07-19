@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Rasterize : MonoBehaviour
+public class P3Rasterize : MonoBehaviour
 {
     public Material mat;
     // Start is called before the first frame update
@@ -48,6 +48,6 @@ public class Rasterize : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }
