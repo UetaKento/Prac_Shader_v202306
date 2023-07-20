@@ -6,7 +6,10 @@ Shader "Unlit/14a_UseCameraDistance"
     }
     SubShader
     {
-        Tags { "RenderType"="Transparent" }
+        Tags{
+            "Queue"="Transparent"
+            "RenderType"="Transparent"
+        }
         Blend SrcAlpha OneMinusSrcAlpha
         LOD 100
 
@@ -49,10 +52,11 @@ Shader "Unlit/14a_UseCameraDistance"
             {
                 fixed4 col = tex2D(_MainTex, i.uv);
                 float cameraDistance = distance(_WorldSpaceCameraPos, i.worldPos);
-                float clampCameraDis1_10 = clamp(cameraDistance, 1, 10);
-                //fixed4 redCol = fixed4(saturate(cameraDistance), 0, );
-                col.a = 1 - ((clampCameraDis1_10 - 1) / 9);
-                //clip(col.a);
+                //カメラとの距離が0ならば、透明度は1。カメラとの距離が10ならば、透明度は0になるようにした。
+                col.a = 1 - (cameraDistance / 10);
+                //float clampCameraDis1_10 = clamp(cameraDistance, 1, 10);
+                //col.a = 1 - ((clampCameraDis1_10 - 1) / 9);
+                clip(col.a-0.01);
                 return col;
             }
             ENDCG
