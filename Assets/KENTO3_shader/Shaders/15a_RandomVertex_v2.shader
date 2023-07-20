@@ -1,10 +1,5 @@
 Shader "Unlit/15a_RandomVertex_v2"
 {
-    Properties
-    {
-        //頂点の動きの幅
-        _VertMoveRange("VertMoveRange",Range(0,0.5)) = 0.025
-    }
     SubShader
     {
         Tags { "RenderType"="Opaque" }
@@ -39,6 +34,12 @@ Shader "Unlit/15a_RandomVertex_v2"
                 return lerp(Min, Max, randomno);
             }
 
+            float blockNoise(float2 Seed)
+            {
+                float2 floorSeed = floor(Seed);
+                return frac(sin(dot(floorSeed, float2(12.9898, 78.233))) * 43758.5453);
+            }
+
             struct appdata
             {
                 float4 vertex : POSITION;
@@ -50,8 +51,6 @@ Shader "Unlit/15a_RandomVertex_v2"
             {
                 float4 vertex : SV_POSITION;
             };
-
-            float _VertMoveRange;
 
             v2f vert (appdata v)
             {
