@@ -1,8 +1,25 @@
 Shader "Unlit/15f_OriginalPerlinNoise_v3"
 {
+    Properties
+    {
+        [NoScaleOffset] _MainTex ("Texture", 2D) = "white" {}
+    }
+
     SubShader
     {
-        Tags { "RenderType"="Opaque" }
+        Tags
+		{
+			"Queue"="Transparent"
+			"RenderType"="Transparent"
+		}
+
+		//Blend構文は色の合成方法を設定するための構文。この1行でブレンドモードが変更され、アルファブレンディングが行われる。
+		//もっとも基本的なアルファブレンディングは「SrcColor * SrcFactor + DstColor * DstFactor」のように設定される。
+		//SrcColorは今現在Fragmentシェーダが算出して書き込もうとしている色。DstColorは既に描画先に書き込まれている色。
+		//SrcFactorはSrcAlpha、DstFactorはOneMinusSrcAlph。
+		//Blend構文を使ってブレンディング(の式)を設定するとき、SrcColorとDstColorは省略され、係数となるSrcFactorとDstFactorだけを記述する。
+		Blend SrcAlpha OneMinusSrcAlpha
+
         LOD 100
 
         Pass
@@ -90,18 +107,22 @@ Shader "Unlit/15f_OriginalPerlinNoise_v3"
                 float4 vertex : SV_POSITION;
             };
 
+            sampler2D _MainTex;
+
             v2f vert (appdata v)
             {
                 v2f o;
                 o.vertex = UnityObjectToClipPos(v.vertex);
-                o.uv = v.uv;
+                o.uv.y = v.uv.y;
+                o.uv.x = v.uv.x+_Time.x;
                 return o;
             }
 
             fixed4 frag (v2f i) : SV_Target
             {
+                //fixed4 tex = tex2D(_MainTex, i.uv);
                 float perlinUV = perlinNoise(i.uv*8);
-                fixed4 col = fixed4(perlinUV, perlinUV, perlinUV, 1);
+                fixed4 col = fixed4(perlinUV, perlinUV, perlinUV, perlinUV);
                 return col;
             }
             ENDCG
