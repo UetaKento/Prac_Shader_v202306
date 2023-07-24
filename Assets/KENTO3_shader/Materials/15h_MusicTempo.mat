@@ -26,6 +26,6 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _BPM: 127.6
+    - _BPM: 128
     m_Colors: []
   m_BuildTextureStacks: []
